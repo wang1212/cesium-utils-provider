@@ -79,9 +79,9 @@ const utilsProvider = require('cesium-utils-provider')
 
 ## Build
 
-Because you cannot get the bundle file, you want to add additional map service resources and other reasons, you can build your own.
+If you cannot get the bundle file, or you want to add additional map service resources and other reasons, you can build your own.
 
--   `clone` to local
+First, `clone` to local
 
 ```bash
 git clone https://github.com/wang1212/cesium-utils-provider.git <dir>

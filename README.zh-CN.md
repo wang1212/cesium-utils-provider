@@ -79,9 +79,9 @@ const utilsProvider = require('cesium-utils-provider')
 
 ## 构建
 
-出于你无法获取到 bundle 文件，想自己添加额外的地图服务资源等其它原因，你可以自己构建。
+出于你无法获取到 bundle 文件，或者想自己添加额外的地图服务资源等其它原因，你可以自己构建。
 
--   `clone` 到本地
+首先， `clone` 到本地
 
 ```bash
 git clone https://github.com/wang1212/cesium-utils-provider.git <dir>
@@ -97,6 +97,6 @@ npm run build
 
 捆绑包文件将在 **build/** 文件夹中生成，包括 **sourcemap** 文件。
 
-## License
+## 许可
 
 [MIT](./LICENSE).

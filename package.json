@@ -29,7 +29,8 @@
 		"build/",
 		"index.js",
 		"index.esm.js",
-		"index.web.js"
+		"index.web.js",
+		"README.zh-CN.md"
 	],
 	"peerDependencies": {
 		"cesium": ">=1.50"
