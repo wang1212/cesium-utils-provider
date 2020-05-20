@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cesium.js Demo</title>
+		<!-- <link href="https://cesium.com/downloads/cesiumjs/releases/1.68/Build/Cesium/Widgets/widgets.css" rel="stylesheet" /> -->
+		<link href="http://www.linwutong.com/static/web-libs/cesiumjs/1.69/Cesium/Widgets/widgets.css" rel="stylesheet" />
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+			}
+
+			html,
+			body,
+			#cesiumContainer {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="cesiumContainer"></div>
+
+		<!-- <script src="https://cesium.com/downloads/cesiumjs/releases/1.68/Build/Cesium/Cesium.js"></script> -->
+		<script src="http://www.linwutong.com/static/web-libs/cesiumjs/1.69/Cesium/Cesium.js"></script>
+		<script src="../build/bundle.min.js"></script>
+		<script>
+			const Cesium = window['Cesium']
+			const tdtToken = '50f23323fd61ce53465fca366c449e87'
+
+			const imageryProviderViewModels = [
+				new Cesium.ProviderViewModel({
+					name: '谷歌全球卫星影像',
+					tooltip: '',
+					iconUrl: '',
+					creationFunction: () => Cesium._utils.Provider.Google.Satellite.Map(),
+				}),
+				new Cesium.ProviderViewModel({
+					name: '谷歌全球矢量道路+注记',
+					tooltip: '',
+					iconUrl: '',
+					creationFunction: () => Cesium._utils.Provider.Google.Road.MapWithAnnotation(),
+				}),
+				new Cesium.ProviderViewModel({
+					name: '天地图全球卫星影像',
+					tooltip: '',
+					iconUrl: '',
+					creationFunction: () => Cesium._utils.Provider.TianDiTu.Satellite.Map({ token: tdtToken }),
+				}),
+				new Cesium.ProviderViewModel({
+					name: '天地图全球矢量道路',
+					tooltip: '',
+					iconUrl: '',
+					creationFunction: () => Cesium._utils.Provider.TianDiTu.Road.Map({ token: tdtToken }),
+				}),
+			]
+
+			// const terrainProviderViewModels = [
+			// 	new Cesium.ProviderViewModel({
+			// 		name: 'Cesium 地形',
+			// 		tooltip: '',
+			// 		iconUrl: '',
+			// 		creationFunction: () => Cesium.createWorldTerrain(),
+			// 	}),
+			// ]
+
+			const viewer = new Cesium.Viewer('cesiumContainer', {
+				homeButton: false,
+				animation: false, // 关闭左下角动画组件
+				baseLayerPicker: true,
+				geocoder: false, // 关闭搜索定位
+				timeline: false, // 关闭时间线部件
+				navigationHelpButton: false, // 关闭右上角导航帮助按钮
+				navigationInstructionsInitiallyVisible: false, // 不显示提示
+				sceneModePicker: false, // 关闭二三维切换
+				scene3DOnly: true, // 只渲染 3D，节省资源
+				imageryProviderViewModels,
+				// terrainProviderViewModels,
+				selectedImageryProviderViewModel: imageryProviderViewModels[0],
+				// selectedTerrainProviderViewModel: terrainProviderViewModels[0],
+				terrainProvider: Cesium.createWorldTerrain(),
+			})
+
+			// 调整鼠标习惯
+			viewer.scene.screenSpaceCameraController.zoomEventTypes = [Cesium.CameraEventType.WHEEL, Cesium.CameraEventType.PINCH]
+			viewer.scene.screenSpaceCameraController.tiltEventTypes = [
+				Cesium.CameraEventType.PINCH,
+				Cesium.CameraEventType.RIGHT_DRAG,
+				{
+					eventType: Cesium.CameraEventType.RIGHT_DRAG,
+					modifier: Cesium.KeyboardEventModifier.CTRL,
+				},
+			]
+
+			// * 雾 - 性能优化
+			viewer.scene.fog.density = 5.0e-4
+			viewer.scene.fog.minimumBrightness = 0.25
+			viewer.scene.fog.screenSpaceErrorFactor = 3.0
+
+			// 深度测试，地形背后的图像将会消失
+			viewer.scene.globe.depthTestAgainstTerrain = true
+
+			// viewer.scene.globe.show = false
+			// viewer.scene.globe.backFaceCulling = false	//
+		</script>
+	</body>
+</html>
