@@ -27,6 +27,7 @@ Including the following map services:
 
 The following bundles are provided:
 
+    types/
     build/
     ├── bundle.js
     ├── bundle.min.js

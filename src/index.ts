@@ -6,7 +6,5 @@
 import * as TianDiTu from './tianditu'
 import * as Google from './google'
 
-export default {
-	TianDiTu,
-	Google,
-}
+export { default as TianDiTu } from './tianditu'
+export { default as Google } from './google'

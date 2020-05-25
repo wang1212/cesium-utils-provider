@@ -27,6 +27,7 @@
 
 提供了以下捆绑包文件:
 
+    types/
     build/
     ├── bundle.js
     ├── bundle.min.js
