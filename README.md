@@ -12,16 +12,20 @@ Including the following map services:
 
 -   TianDiTu
 
-    -   TianDiTu.Satellite.Map
-    -   TianDiTu.Satellite.Annotation
-    -   TianDiTu.Road.Map
-    -   TianDiTu.Road.Annotation
+    -   TianDiTu.satellite.map
+    -   TianDiTu.satellite.annotation
+    -   TianDiTu.streets.map
+    -   TianDiTu.streets.annotation
 
 -   Google
 
-    -   Google.Satellite.Map
-    -   Google.Road.MapWithAnnotation
-    -   Google.Road.Annotation
+    -   Google.satellite.map
+    -   Google.streets.mapWithAnnotation
+    -   Google.streets.annotation
+
+-   OpenStreetMap
+
+    -   OSM.streets.mapWithAnnotation
 
 ## Bundle
 
@@ -47,7 +51,7 @@ It also provides the corresponding **sourcemap** file.
 In the browser, referenced by the `<script>` tag:
 
 ```html
-<script src="https://cesium.com/downloads/cesiumjs/releases/1.69/Build/Cesium/Cesium.js"></script>
+<script src="https://cesium.com/downloads/cesiumjs/releases/1.70.1/Build/Cesium/Cesium.js"></script>
 <!-- Reference the utils library -->
 <script src="/path/to/bundle.min.js"></script>
 ```
