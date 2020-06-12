@@ -1,6 +1,6 @@
 {
 	"name": "cesium-utils-provider",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Cesium.js - commonly used ImageryProvider and TerrainProvider.",
 	"keywords": [
 		"Cesium.js",
