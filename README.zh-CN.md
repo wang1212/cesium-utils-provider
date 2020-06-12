@@ -12,21 +12,26 @@
 
 -   TianDiTu
 
-    -   TianDiTu.Satellite.Map
-    -   TianDiTu.Satellite.Annotation
-    -   TianDiTu.Road.Map
-    -   TianDiTu.Road.Annotation
+    -   TianDiTu.satellite.map
+    -   TianDiTu.satellite.annotation
+    -   TianDiTu.streets.map
+    -   TianDiTu.streets.annotation
 
 -   Google
 
-    -   Google.Satellite.Map
-    -   Google.Road.MapWithAnnotation
-    -   Google.Road.Annotation
+    -   Google.satellite.map
+    -   Google.streets.mapWithAnnotation
+    -   Google.streets.annotation
+
+-   OpenStreetMap
+
+    -   OSM.streets.mapWithAnnotation
 
 ## 打包文件
 
 提供了以下捆绑包文件:
 
+    types/
     build/
     ├── bundle.js
     ├── bundle.min.js
@@ -46,7 +51,7 @@
 在浏览器中，通过 `<script>` 标签引用：
 
 ```html
-<script src="https://cesium.com/downloads/cesiumjs/releases/1.69/Build/Cesium/Cesium.js"></script>
+<script src="https://cesium.com/downloads/cesiumjs/releases/1.70.1/Build/Cesium/Cesium.js"></script>
 <!-- 引用该工具库 -->
 <script src="/path/to/bundle.min.js"></script>
 ```
@@ -79,9 +84,9 @@ const utilsProvider = require('cesium-utils-provider')
 
 ## 构建
 
-出于你无法获取到 bundle 文件，想自己添加额外的地图服务资源等其它原因，你可以自己构建。
+出于你无法获取到 bundle 文件，或者想自己添加额外的地图服务资源等其它原因，你可以自己构建。
 
--   `clone` 到本地
+首先， `clone` 到本地
 
 ```bash
 git clone https://github.com/wang1212/cesium-utils-provider.git <dir>
@@ -97,6 +102,6 @@ npm run build
 
 捆绑包文件将在 **build/** 文件夹中生成，包括 **sourcemap** 文件。
 
-## License
+## 许可
 
 [MIT](./LICENSE).

@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Cesium.js Demo</title>
 		<!-- <link href="https://cesium.com/downloads/cesiumjs/releases/1.68/Build/Cesium/Widgets/widgets.css" rel="stylesheet" /> -->
-		<link href="http://www.linwutong.com/static/web-libs/cesiumjs/1.69/Cesium/Widgets/widgets.css" rel="stylesheet" />
+		<link href="http://www.linwutong.com/static/web-libs/cesiumjs/1.70.1/Cesium/Widgets/widgets.css" rel="stylesheet" />
 		<style>
 			body {
 				margin: 0;
@@ -25,7 +25,7 @@
 		<div id="cesiumContainer"></div>
 
 		<!-- <script src="https://cesium.com/downloads/cesiumjs/releases/1.68/Build/Cesium/Cesium.js"></script> -->
-		<script src="http://www.linwutong.com/static/web-libs/cesiumjs/1.69/Cesium/Cesium.js"></script>
+		<script src="http://www.linwutong.com/static/web-libs/cesiumjs/1.70.1/Cesium/Cesium.js"></script>
 		<script src="../build/bundle.min.js"></script>
 		<script>
 			const Cesium = window['Cesium']
@@ -36,25 +36,37 @@
 					name: '谷歌全球卫星影像',
 					tooltip: '',
 					iconUrl: '',
-					creationFunction: () => Cesium._utils.Provider.Google.Satellite.Map(),
+					creationFunction: () => Cesium._utils.Provider.Google.satellite.map(),
 				}),
 				new Cesium.ProviderViewModel({
 					name: '谷歌全球矢量道路+注记',
 					tooltip: '',
 					iconUrl: '',
-					creationFunction: () => Cesium._utils.Provider.Google.Road.MapWithAnnotation(),
+					creationFunction: () => Cesium._utils.Provider.Google.streets.mapWithAnnotation(),
 				}),
 				new Cesium.ProviderViewModel({
-					name: '天地图全球卫星影像',
+					name: '天地图全球卫星影像（叠加注记）',
 					tooltip: '',
 					iconUrl: '',
-					creationFunction: () => Cesium._utils.Provider.TianDiTu.Satellite.Map({ token: tdtToken }),
+					creationFunction: () => [
+						Cesium._utils.Provider.TianDiTu.satellite.map({ token: tdtToken }),
+						Cesium._utils.Provider.TianDiTu.satellite.annotation({ token: tdtToken }),
+					],
 				}),
 				new Cesium.ProviderViewModel({
-					name: '天地图全球矢量道路',
+					name: '天地图全球矢量道路（叠加注记）',
 					tooltip: '',
 					iconUrl: '',
-					creationFunction: () => Cesium._utils.Provider.TianDiTu.Road.Map({ token: tdtToken }),
+					creationFunction: () => [
+						Cesium._utils.Provider.TianDiTu.streets.map({ token: tdtToken }),
+						Cesium._utils.Provider.TianDiTu.streets.annotation({ token: tdtToken }),
+					],
+				}),
+				new Cesium.ProviderViewModel({
+					name: 'OSM 全球矢量道路+注记',
+					tooltip: '',
+					iconUrl: '',
+					creationFunction: () => Cesium._utils.Provider.OSM.streets.mapWithAnnotation(),
 				}),
 			]
 
