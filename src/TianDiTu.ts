@@ -4,7 +4,7 @@
  * @see {@link http://lbs.tianditu.gov.cn/server/MapService.html docs}
  */
 import { WebMapTileServiceImageryProvider } from 'cesium'
-
+// !由于WebMapTileServiceImageryProvider使用{s}占位符后其他参数请求时丢失, 临时使用random函数随机一个子域区间值
 /**
  * Vector streets Image - 矢量道路图地图
  * - Spherical Mercator projection（球面墨卡托投影）
@@ -16,7 +16,7 @@ import { WebMapTileServiceImageryProvider } from 'cesium'
  */
 function streetsMap({ token, options }: { token: string; options?: WebMapTileServiceImageryProvider.ConstructorOptions }): WebMapTileServiceImageryProvider {
 	return new WebMapTileServiceImageryProvider({
-		url: `http://t0.tianditu.com/vec_w/wmts?tk=${token}`,
+		url: `http://t${(Math.random() * (7 - 0 + 1) + 0) | 0}.tianditu.gov.cn/vec_w/wmts?tk=${token}`,
 		format: 'tiles',
 		layer: 'vec',
 		style: 'default',
@@ -44,7 +44,7 @@ function streetsAnnotation({
 	options?: WebMapTileServiceImageryProvider.ConstructorOptions
 }): WebMapTileServiceImageryProvider {
 	return new WebMapTileServiceImageryProvider({
-		url: `http://t0.tianditu.com/cva_w/wmts?tk=${token}`,
+		url: `http://t${(Math.random() * (7 - 0 + 1) + 0) | 0}.tianditu.gov.cn/cva_w/wmts?tk=${token}`,
 		format: 'tiles',
 		layer: 'cva',
 		style: 'default',
@@ -66,7 +66,7 @@ function streetsAnnotation({
  */
 function satelliteMap({ token, options }: { token: string; options?: WebMapTileServiceImageryProvider.ConstructorOptions }): WebMapTileServiceImageryProvider {
 	return new WebMapTileServiceImageryProvider({
-		url: `http://t0.tianditu.com/img_w/wmts?tk=${token}`,
+		url: `http://t${(Math.random() * (7 - 0 + 1) + 0) | 0}.tianditu.gov.cn/img_w/wmts?tk=${token}`,
 		format: 'tiles',
 		layer: 'img',
 		style: 'default',
@@ -94,7 +94,7 @@ function satelliteAnnotation({
 	options?: WebMapTileServiceImageryProvider.ConstructorOptions
 }): WebMapTileServiceImageryProvider {
 	return new WebMapTileServiceImageryProvider({
-		url: `http://t0.tianditu.com/cia_w/wmts?tk=${token}`,
+		url: `http://t${(Math.random() * (7 - 0 + 1) + 0) | 0}.tianditu.gov.cn/cia_w/wmts?tk=${token}`,
 		format: 'tiles',
 		layer: 'cia',
 		style: 'default',
