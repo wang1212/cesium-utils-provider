@@ -10,11 +10,14 @@
 	"homepage": "https://github.com/wang1212/cesium-utils-provider.git#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/wang1212/cesium-utils-provider.git"
+		"url": "git+https://github.com/wang1212/cesium-utils-provider.git"
+	},
+	"bugs": {
+		"url": "https://github.com/wang1212/cesium-utils-provider/issues"
 	},
 	"license": "MIT",
 	"engines": {
-		"node": ">=10"
+		"node": ">=12"
 	},
 	"author": "wang1212",
 	"main": "index.js",
